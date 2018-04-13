@@ -20,7 +20,6 @@ package de.uni_potsdam.hpi.asg.asgtoolswrapper;
  */
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,9 +27,6 @@ import java.util.List;
 import de.uni_potsdam.hpi.asg.common.invoker.ExternalToolsInvoker;
 import de.uni_potsdam.hpi.asg.common.invoker.InvokeReturn;
 import de.uni_potsdam.hpi.asg.protocols.io.main.Protocol;
-import de.uni_potsdam.hpi.asg.protocols.io.stgindex.STGComponent;
-import de.uni_potsdam.hpi.asg.protocols.io.stgindex.STGIndex;
-import de.uni_potsdam.hpi.asg.protocols.io.stgindex.STGIndexFile;
 
 public class AsgBreeze2StgInvoker extends ExternalToolsInvoker {
 
@@ -43,45 +39,17 @@ public class AsgBreeze2StgInvoker extends ExternalToolsInvoker {
     }
 
     private InvokeReturn internalBreeze2stg(File outFile, File inFile, Protocol hsProtocol) {
-        File stgIndexFile = hsProtocol.getStgIndexFile();
-        if(stgIndexFile == null) {
-            return null;
-        }
-        STGIndex stgIndex = STGIndexFile.readIn(stgIndexFile);
-        if(stgIndex == null) {
-            return null;
-        }
-        List<STGComponent> newComps = new ArrayList<>();
-        for(STGComponent oldComp : stgIndex.getComponents()) {
-            File oldFile = stgIndex.getSTGFileForComponent(oldComp.getBreezename());
-            STGComponent newComp = new STGComponent(oldComp.getBreezename(), oldFile.getName());
-            newComps.add(newComp);
-            if(oldFile.exists()) {
-                addInputFilesToCopy(oldFile);
-            }
-        }
-        STGIndex newIndex = new STGIndex(newComps);
-        File newIndexFile = null;
-        try {
-            newIndexFile = File.createTempFile("stgindex", ".xml");
-        } catch(IOException e) {
-            return null;
-        }
-        if(!STGIndexFile.writeOut(newIndex, newIndexFile)) {
-            return null;
-        }
-
         List<String> params = new ArrayList<>();
         //@formatter:off
         params.addAll(Arrays.asList(
             "-debug", 
             "-out", outFile.getName(),
-            "-p", newIndexFile.getName(),
+            "-hs", hsProtocol.getName(),
             inFile.getName()
         ));
         //@formatter:on
 
-        addInputFilesToCopy(inFile, newIndexFile);
+        addInputFilesToCopy(inFile);
         addOutputFilesToExport(outFile);
 
         InvokeReturn ret = run(params, "breeze2stg");
