@@ -98,17 +98,20 @@ public class AsgResynInvoker extends ExternalToolsInvoker {
 
             if(params.getZipFile() != null) {
                 resynArgs.add("-zip");
-                resynArgs.add(params.getZipFile().getAbsolutePath());
+                resynArgs.add(params.getZipFile().getName());
+                addOutputFilesToExport(params.getZipFile());
             }
 
             if(params.getLogFile() != null) {
                 resynArgs.add("-log");
-                resynArgs.add(params.getLogFile().getAbsolutePath());
+                resynArgs.add(params.getLogFile().getName());
+                addOutputFilesToExport(params.getLogFile());
             }
 
             if(params.getStgOutFile() != null) {
                 resynArgs.add("-stgout");
-                resynArgs.add(params.getStgOutFile().getAbsolutePath());
+                resynArgs.add(params.getStgOutFile().getName());
+                addOutputFilesToExport(params.getStgOutFile());
             }
 
             if(params.getConfigFile() != null) {
@@ -140,7 +143,7 @@ public class AsgResynInvoker extends ExternalToolsInvoker {
         resynArgs.add(breezeFile.getAbsolutePath());
         addInputFilesToCopy(breezeFile);
 
-        InvokeReturn ret = run(resynArgs, "asgresyn");
+        InvokeReturn ret = run(resynArgs, "asgresyn_" + breezeFile.getName());
         errorHandling(ret);
         return ret;
     }
