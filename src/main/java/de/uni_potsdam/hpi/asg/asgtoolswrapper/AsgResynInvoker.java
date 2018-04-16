@@ -35,11 +35,11 @@ public class AsgResynInvoker extends ExternalToolsInvoker {
         super("asgresyn");
     }
 
-    public static InvokeReturn resynthesise(File breezeFile, AsgResynParams params, Technology tech, Protocol protocol, File outFile) {
-        return new AsgResynInvoker().internalResynthesise(breezeFile, params, tech, protocol, outFile);
+    public static InvokeReturn invoke(File breezeFile, AsgResynParams params, Technology tech, Protocol protocol, File outFile) {
+        return new AsgResynInvoker().internalInvoke(breezeFile, params, tech, protocol, outFile);
     }
 
-    private InvokeReturn internalResynthesise(File breezeFile, AsgResynParams params, Technology tech, Protocol protocol, File outFile) {
+    private InvokeReturn internalInvoke(File breezeFile, AsgResynParams params, Technology tech, Protocol protocol, File outFile) {
         List<String> resynArgs = new ArrayList<String>();
 
         if(tech == null) {

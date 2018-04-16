@@ -34,11 +34,11 @@ public class AsgDelaymtachInvoker extends ExternalToolsInvoker {
         super("asgdelaymatch");
     }
 
-    public static InvokeReturn resynthesise(File vInFile, AsgDelaymatchParams params, Technology tech, Protocol protocol, File vOutFile) {
-        return new AsgDelaymtachInvoker().internalResynthesise(vInFile, params, tech, protocol, vOutFile);
+    public static InvokeReturn invoke(File vInFile, AsgDelaymatchParams params, Technology tech, Protocol protocol, File vOutFile) {
+        return new AsgDelaymtachInvoker().internalInvoke(vInFile, params, tech, protocol, vOutFile);
     }
 
-    private InvokeReturn internalResynthesise(File vInFile, AsgDelaymatchParams params, Technology tech, Protocol protocol, File vOutFile) {
+    private InvokeReturn internalInvoke(File vInFile, AsgDelaymatchParams params, Technology tech, Protocol protocol, File vOutFile) {
         List<String> dmArgs = new ArrayList<String>();
 
         if(tech == null) {
