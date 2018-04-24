@@ -30,6 +30,10 @@ import de.uni_potsdam.hpi.asg.protocols.io.main.Protocol;
 
 public class AsgDelaymtachInvoker extends ExternalToolsInvoker {
 
+    public enum DelayMatchState {
+        fail, verified, timingViolation, uncertain
+    }
+
     private AsgDelaymtachInvoker() {
         super("asgdelaymatch");
     }
@@ -146,7 +150,23 @@ public class AsgDelaymtachInvoker extends ExternalToolsInvoker {
         addInputFilesToCopy(vInFile);
 
         InvokeReturn ret = run(dmArgs, "asgdelaymatch_" + vInFile.getName());
-        errorHandling(ret);
+        if(!errorHandling(ret)) {
+            return ret;
+        }
+
+        DelayMatchState state = null;
+        switch(ret.getExitCode()) {
+            case 0:
+                state = DelayMatchState.verified;
+            case 1:
+                state = DelayMatchState.timingViolation;
+            case 2:
+                state = DelayMatchState.uncertain;
+            default:
+                state = DelayMatchState.fail;
+        }
+        ret.setPayload(state);
+
         return ret;
     }
 }
