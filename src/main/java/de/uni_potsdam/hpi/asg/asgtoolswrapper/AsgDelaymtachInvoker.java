@@ -158,12 +158,16 @@ public class AsgDelaymtachInvoker extends ExternalToolsInvoker {
         switch(ret.getExitCode()) {
             case 0:
                 state = DelayMatchState.verified;
+                break;
             case 1:
                 state = DelayMatchState.timingViolation;
+                break;
             case 2:
                 state = DelayMatchState.uncertain;
+                break;
             default:
                 state = DelayMatchState.fail;
+                break;
         }
         ret.setPayload(state);
 
