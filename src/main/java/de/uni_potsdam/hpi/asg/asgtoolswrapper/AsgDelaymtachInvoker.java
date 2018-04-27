@@ -21,6 +21,7 @@ package de.uni_potsdam.hpi.asg.asgtoolswrapper;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import de.uni_potsdam.hpi.asg.common.invoker.ExternalToolsInvoker;
@@ -149,7 +150,7 @@ public class AsgDelaymtachInvoker extends ExternalToolsInvoker {
         addInputFilesToCopy(vInFile);
 
         InvokeReturn ret = run(dmArgs, "asgdelaymatch_" + vInFile.getName());
-        if(!errorHandling(ret)) {
+        if(!errorHandling(ret, Arrays.asList(0, 1, 2))) {
             return ret;
         }
 
