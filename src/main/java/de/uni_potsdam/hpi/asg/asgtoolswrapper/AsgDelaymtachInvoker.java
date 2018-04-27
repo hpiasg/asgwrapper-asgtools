@@ -57,12 +57,11 @@ public class AsgDelaymtachInvoker extends ExternalToolsInvoker {
         dmArgs.add("-hs");
         dmArgs.add(protocol.getName());
 
-        if(vOutFile == null) {
-            return null;
+        if(vOutFile != null) {
+            dmArgs.add("-out");
+            dmArgs.add(vOutFile.getName());
+            addOutputFilesToExport(vOutFile);
         }
-        dmArgs.add("-out");
-        dmArgs.add(vOutFile.getName());
-        addOutputFilesToExport(vOutFile);
 
         if(params != null) {
 
