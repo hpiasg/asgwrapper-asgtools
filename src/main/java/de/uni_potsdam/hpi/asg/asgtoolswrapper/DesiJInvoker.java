@@ -33,8 +33,8 @@ public class DesiJInvoker extends ExternalToolsInvoker {
         super("desij");
     }
 
-    public static InvokeReturn killDummies(File outFile, File inFile) {
-        return new DesiJInvoker().internalKillDummies(outFile, inFile);
+    public static InvokeReturn killDummies(File outFile, File inFile, boolean recover) {
+        return new DesiJInvoker().internalKillDummies(outFile, inFile, recover);
     }
 
     public static InvokeReturn decompose(String decompositionStrategy, String partitionStrategy, File inFile) {
@@ -45,11 +45,18 @@ public class DesiJInvoker extends ExternalToolsInvoker {
         return new DesiJInvoker().internalBreeze2stg(outFile, inFile, withDeco, breezeExprFile);
     }
 
-    private InvokeReturn internalKillDummies(File outFile, File inFile) {
+    private InvokeReturn internalKillDummies(File outFile, File inFile, boolean recover) {
+        String operation = null;
+        if(recover) {
+            operation = "killdummiesrelaxedrecover";
+        } else {
+            operation = "killdummiesrelaxed";
+        }
+
         //@formatter:off
         List<String> params = Arrays.asList(
-            "-Y", "-t", 
-            "operation=killdummiesrelaxed", 
+            "-Y", "-t",
+            "operation=" + operation, 
             "outfile=" + outFile.getName(),
             inFile.getName()
         );
