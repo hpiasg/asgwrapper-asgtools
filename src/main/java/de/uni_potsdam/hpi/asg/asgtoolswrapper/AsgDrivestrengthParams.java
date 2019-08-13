@@ -1,7 +1,7 @@
 package de.uni_potsdam.hpi.asg.asgtoolswrapper;
 
 /*
- * Copyright (C) 2018 Norman Kluge
+ * Copyright (C) 2018 - 2019 Norman Kluge
  * 
  * This file is part of ASGwrapper-asgtools.
  * 
@@ -27,17 +27,24 @@ public class AsgDrivestrengthParams {
         SA, NOP, TOP, BOT, SFL, ESE, NSE, EDM, FO
     }
 
-    private Optimizer optimizer;
-    private Integer   optimizeEnergyPercentage;
+    public enum SAAlgorithm {
+        SAD, SAP, SAE
+    }
 
-    private Double    outputPinCapacitance;
-    private Double    inputDrivenMaxCIn;
+    private Optimizer   optimizer;
+    private Integer     optimizeDelayFactor;
+    private Integer     optimizeEnergyFactor;
+    private Integer     optimizePowerFactor;
+    private SAAlgorithm optimizeSAAlgorithm;
 
-    private File      sdcOutFile;
-    private File      logFile;
+    private Double      outputPinCapacitance;
+    private Double      inputDrivenMaxCIn;
 
-    private Boolean   skipFlattener;
-    private Boolean   debug;
+    private File        sdcOutFile;
+    private File        logFile;
+
+    private Boolean     skipFlattener;
+    private Boolean     debug;
 
     public Optimizer getOptimizer() {
         return optimizer;
@@ -45,14 +52,6 @@ public class AsgDrivestrengthParams {
 
     public void setOptimizer(Optimizer optimizer) {
         this.optimizer = optimizer;
-    }
-
-    public Integer getOptimizeEnergyPercentage() {
-        return optimizeEnergyPercentage;
-    }
-
-    public void setOptimizeEnergyPercentage(Integer optimizeEnergyPercentage) {
-        this.optimizeEnergyPercentage = optimizeEnergyPercentage;
     }
 
     public Double getOutputPinCapacitance() {
@@ -101,5 +100,37 @@ public class AsgDrivestrengthParams {
 
     public void setDebug(Boolean debug) {
         this.debug = debug;
+    }
+
+    public Integer getOptimizeDelayFactor() {
+        return optimizeDelayFactor;
+    }
+
+    public void setOptimizeDelayFactor(Integer optimizeDelayFactor) {
+        this.optimizeDelayFactor = optimizeDelayFactor;
+    }
+
+    public Integer getOptimizeEnergyFactor() {
+        return optimizeEnergyFactor;
+    }
+
+    public void setOptimizeEnergyFactor(Integer optimizeEnergyFactor) {
+        this.optimizeEnergyFactor = optimizeEnergyFactor;
+    }
+
+    public Integer getOptimizePowerFactor() {
+        return optimizePowerFactor;
+    }
+
+    public void setOptimizePowerFactor(Integer optimizePowerFactor) {
+        this.optimizePowerFactor = optimizePowerFactor;
+    }
+
+    public void setOptimizeSAAlgorithm(SAAlgorithm optimizeSAAlgorithm) {
+        this.optimizeSAAlgorithm = optimizeSAAlgorithm;
+    }
+
+    public SAAlgorithm getOptimizeSAAlgorithm() {
+        return optimizeSAAlgorithm;
     }
 }

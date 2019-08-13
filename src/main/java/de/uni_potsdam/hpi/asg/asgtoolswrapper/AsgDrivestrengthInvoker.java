@@ -1,7 +1,7 @@
 package de.uni_potsdam.hpi.asg.asgtoolswrapper;
 
 /*
- * Copyright (C) 2018 Norman Kluge
+ * Copyright (C) 2018 - 2019 Norman Kluge
  * 
  * This file is part of ASGwrapper-asgtools.
  * 
@@ -72,9 +72,35 @@ public class AsgDrivestrengthInvoker extends ExternalToolsInvoker {
                 dsArgs.add(params.getOptimizer().toString());
             }
 
-            if(params.getOptimizeEnergyPercentage() != null) {
-                dsArgs.add("-optimizeEnergyPercentage");
-                dsArgs.add(params.getOptimizeEnergyPercentage().toString());
+//            if(params.getOptimizeDelayFactor() != null && params.getOptimizeEnergyFactor() != null && params.getOptimizePowerFactor() != null) {
+//                dsArgs.add("-optimizeEnergyPercentage");
+//                Integer val = 0;
+//                if(params.getOptimizeDelayFactor() > 0) {
+//                    val = 0;
+//                } else if(params.getOptimizePowerFactor() > 0) {
+//                    val = 100;
+//                }
+//                dsArgs.add(val.toString());
+//            }
+
+            if(params.getOptimizeSAAlgorithm() != null) {
+                dsArgs.add("-optimizeSAAlgorithm");
+                dsArgs.add(params.getOptimizeSAAlgorithm().toString());
+            }
+
+            if(params.getOptimizeDelayFactor() != null) {
+                dsArgs.add("-optimizeDelayFactor");
+                dsArgs.add(params.getOptimizeDelayFactor().toString());
+            }
+
+            if(params.getOptimizeEnergyFactor() != null) {
+                dsArgs.add("-optimizeEnergyFactor");
+                dsArgs.add(params.getOptimizeEnergyFactor().toString());
+            }
+
+            if(params.getOptimizePowerFactor() != null) {
+                dsArgs.add("-optimizePowerFactor");
+                dsArgs.add(params.getOptimizePowerFactor().toString());
             }
 
             if(params.getOutputPinCapacitance() != null) {
