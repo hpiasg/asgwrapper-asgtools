@@ -83,11 +83,6 @@ public class AsgDrivestrengthInvoker extends ExternalToolsInvoker {
 //                dsArgs.add(val.toString());
 //            }
 
-            if(params.getOptimizeSAAlgorithm() != null) {
-                dsArgs.add("-optimizeSAAlgorithm");
-                dsArgs.add(params.getOptimizeSAAlgorithm().toString());
-            }
-
             if(params.getOptimizeDelayFactor() != null) {
                 dsArgs.add("-optimizeDelayFactor");
                 dsArgs.add(params.getOptimizeDelayFactor().toString());

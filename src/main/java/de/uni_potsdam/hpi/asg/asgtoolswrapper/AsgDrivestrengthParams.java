@@ -27,24 +27,19 @@ public class AsgDrivestrengthParams {
         SA, NOP, TOP, BOT, SFL, ESE, NSE, EDM, FO
     }
 
-    public enum SAAlgorithm {
-        SAD, SAP, SAE
-    }
+    private Optimizer optimizer;
+    private Integer   optimizeDelayFactor;
+    private Integer   optimizeEnergyFactor;
+    private Integer   optimizePowerFactor;
 
-    private Optimizer   optimizer;
-    private Integer     optimizeDelayFactor;
-    private Integer     optimizeEnergyFactor;
-    private Integer     optimizePowerFactor;
-    private SAAlgorithm optimizeSAAlgorithm;
+    private Double    outputPinCapacitance;
+    private Double    inputDrivenMaxCIn;
 
-    private Double      outputPinCapacitance;
-    private Double      inputDrivenMaxCIn;
+    private File      sdcOutFile;
+    private File      logFile;
 
-    private File        sdcOutFile;
-    private File        logFile;
-
-    private Boolean     skipFlattener;
-    private Boolean     debug;
+    private Boolean   skipFlattener;
+    private Boolean   debug;
 
     public Optimizer getOptimizer() {
         return optimizer;
@@ -124,13 +119,5 @@ public class AsgDrivestrengthParams {
 
     public void setOptimizePowerFactor(Integer optimizePowerFactor) {
         this.optimizePowerFactor = optimizePowerFactor;
-    }
-
-    public void setOptimizeSAAlgorithm(SAAlgorithm optimizeSAAlgorithm) {
-        this.optimizeSAAlgorithm = optimizeSAAlgorithm;
-    }
-
-    public SAAlgorithm getOptimizeSAAlgorithm() {
-        return optimizeSAAlgorithm;
     }
 }
