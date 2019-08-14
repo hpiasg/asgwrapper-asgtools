@@ -18,4 +18,4 @@ To build ASGwrapper-asgtools, Apache Maven v3 (or later) and the Java Developmen
 
 1. Build [ASGcommon](https://github.com/hpiasg/asgcommon)
 2. Build [ASGprotocols](https://github.com/hpiasg/asgprotocols)
-4. Execute `mvn clean install -DskipTests`
+3. Execute `mvn clean install -DskipTests`
