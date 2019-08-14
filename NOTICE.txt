@@ -11,6 +11,11 @@ https://github.com/hpiasg/asgcommon
 Copyright (C) 2012-2019 Universitaet Augsburg, Hasso-Plattner-Institut fuer Softwaresystemtechnik GmbH
 Licensed under GNU General Public License (GPL), Version 3.0
 
+ASGprotocols v1.0
+https://github.com/hpiasg/asgprotocols
+Copyright (C) 2018-2019 Hasso-Plattner-Institut fuer Softwaresystemtechnik GmbH
+Licensed under GNU General Public License (GPL), Version 3.0
+
 This software makes use of the following external software:
 
 ASGbreeze2stg v1.0
