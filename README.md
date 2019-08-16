@@ -1,7 +1,7 @@
 ASGwrapper-asgtools
 ---------------------
 
-ASGwrapper-asgtools is a helper library to abstract the internal tool calls of the ASGtools
+ASGwrapper-asgtools is a library which helps to decouple ASGtools from each other by providing a calling interface.
 
 It supports
 * ASGbreeze2stg v1.0+
@@ -11,6 +11,7 @@ It supports
 * ASGresyn v1.3+
 * DesiJ v3.2+
 
+To avoid of circular dependencies, these tools are not included in this release.
 
 ### Build instructions ###
 
