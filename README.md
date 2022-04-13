@@ -9,13 +9,13 @@ It supports
 * ASGdrivestrength v1.1+
 * ASGlogic v0.3+
 * ASGresyn v1.3+
-* DesiJ v3.2+
+* DesiJ v3.3+
 
 To avoid of circular dependencies, these tools are not included in this release.
 
 ### Build instructions ###
 
-To build ASGwrapper-asgtools, Apache Maven v3 (or later) and the Java Development Kit (JDK) v1.7 (or later) are required.
+To build ASGwrapper-asgtools, Apache Maven v3.1.1 (or later) and the Java Development Kit (JDK) v1.8 (or later) are required.
 
 1. Build [ASGcommon](https://github.com/hpiasg/asgcommon)
 2. Build [ASGprotocols](https://github.com/hpiasg/asgprotocols)
